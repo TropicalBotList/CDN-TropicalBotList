@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  cdn:
+    container_name: Team-Tritan-CDN
+    restart: always
+    build: .
+    ports:
+      - 8081:80
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 5s
+      timeout: 10s
+      retries: 60
+      start_period: 60s
